@@ -30,6 +30,7 @@ public class MainWindow {
 	double allTotal = 0;
 	double userBudget = 0, userChange = 0;
 	private JTextField TxtF_Budget;
+	private JTextField TxtF_Specify_Qty;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -260,6 +261,34 @@ public class MainWindow {
 		Lbl_Notify.setForeground(new Color(160, 82, 45));
 		Lbl_Notify.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
+		JPanel Pnl_Transaction_1 = new JPanel();
+		Pnl_Transaction_1.setLayout(null);
+		Pnl_Transaction_1.setBackground(new Color(205, 133, 63));
+		Pnl_Transaction_1.setBounds(300, 335, 250, 62);
+		frmEspressohub.getContentPane().add(Pnl_Transaction_1);
+		
+		JLabel Lbl_Specify_Qty = new JLabel("SPECIFIED QUANTITY");
+		Lbl_Specify_Qty.setForeground(new Color(139, 69, 19));
+		Lbl_Specify_Qty.setFont(new Font("Tahoma", Font.BOLD, 12));
+		Lbl_Specify_Qty.setBounds(10, 11, 229, 14);
+		Pnl_Transaction_1.add(Lbl_Specify_Qty);
+		
+		TxtF_Specify_Qty = new JTextField();
+		TxtF_Specify_Qty.setText("00.00");
+		TxtF_Specify_Qty.setForeground(Color.WHITE);
+		TxtF_Specify_Qty.setFont(new Font("Tahoma", Font.BOLD, 14));
+		TxtF_Specify_Qty.setColumns(10);
+		TxtF_Specify_Qty.setBackground(new Color(160, 82, 45));
+		TxtF_Specify_Qty.setBounds(10, 28, 130, 23);
+		Pnl_Transaction_1.add(TxtF_Specify_Qty);
+		
+		JButton Btn_Specified_Qty = new JButton("Enter");		
+		Btn_Specified_Qty.setForeground(new Color(240, 248, 255));
+		Btn_Specified_Qty.setFont(new Font("Tahoma", Font.BOLD, 14));
+		Btn_Specified_Qty.setBackground(new Color(255, 127, 80));
+		Btn_Specified_Qty.setBounds(150, 28, 89, 23);
+		Pnl_Transaction_1.add(Btn_Specified_Qty);
+		
 		Btn_Coffee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getBlkCoffee = objPrice.getBlkCoffeePrice();
@@ -268,6 +297,7 @@ public class MainWindow {
 				subBlkCoffee += getBlkCoffee;
 				allTotal += getBlkCoffee;
 				
+				Lbl_Coffee_Order.setText("COFFEE: Black Coffee");
 				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntBlkCoffee));
 				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subBlkCoffee));
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", allTotal));
@@ -282,6 +312,7 @@ public class MainWindow {
 				subLatte += getLatte;
 				allTotal += getLatte;
 				
+				Lbl_Coffee_Order.setText("COFFEE: Latte");
 				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntLatte));
 				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subLatte));
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", allTotal));
@@ -296,6 +327,7 @@ public class MainWindow {
 				subCappuccino += getCappuccino;
 				allTotal += getCappuccino;
 				
+				Lbl_Coffee_Order.setText("COFFEE: Cappuccino");
 				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntCappuccino));
 				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subCappuccino));
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", allTotal));
@@ -310,6 +342,7 @@ public class MainWindow {
 				subAmericano += getAmericano;
 				allTotal += getAmericano;
 				
+				Lbl_Coffee_Order.setText("COFFEE: Americano");
 				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntAmericano));
 				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subAmericano));
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", allTotal));
@@ -324,9 +357,15 @@ public class MainWindow {
 				subEspresso += getEspresso;
 				allTotal += getEspresso;
 				
+				Lbl_Coffee_Order.setText("COFFEE: Espresso");
 				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntEspresso));
 				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subEspresso));
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", allTotal));
+			}
+		});
+		
+		Btn_Specified_Qty.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
@@ -359,7 +398,7 @@ public class MainWindow {
 					
 				} catch(NumberFormatException ex) {
 					Lbl_Notify.setForeground(new Color(255, 0, 0));
-					Lbl_Notify.setText("Invalid Input");
+					Lbl_Notify.setText("I");
 				}
 								
 			}
@@ -370,5 +409,7 @@ public class MainWindow {
 				OfficialReceipt.displayReceipt(frmEspressohub ,cntBlkCoffee, cntLatte, cntCappuccino, cntAmericano, cntEspresso, subBlkCoffee, subLatte, subCappuccino, subAmericano, subEspresso, allTotal, userBudget, userChange);
 			}
 		});
+	
 	}
+		
 }
