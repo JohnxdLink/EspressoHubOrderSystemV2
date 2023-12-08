@@ -566,6 +566,9 @@ public class MainWindow {
 				
 				Lbl_Logo_View.setVisible(true);
 				Pnl_CoffeeDscpt_Vw.setVisible(false);
+				
+				Btn_Receipt.setEnabled(false);
+				Btn_Reset_All.setEnabled(false);
 			}
 		});
 
