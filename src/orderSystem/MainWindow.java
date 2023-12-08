@@ -26,11 +26,11 @@ public class MainWindow {
 	double getBlkCoffee = 0, getLatte = 0, getCappuccino = 0, getAmericano = 0, getEspresso = 0;
 	double subBlkCoffee = 0, subLatte = 0, subCappuccino = 0, subAmericano = 0, subEspresso = 0;
 	int cntBlkCoffee = 0, cntLatte = 0, cntCappuccino = 0, cntAmericano = 0, cntEspresso = 0;
-	
-	double subspcBlkCoffee = 0;
-	int cntspcBlkCoffee = 0;
+
+	double subspcBlkCoffee = 0, subspcLatte = 0, subspcCappuccino = 0, subspcAmericano = 0, subspcEspresso = 0;
+	int cntspcBlkCoffee = 0, cntspcLatte = 0, cntspcCappuccino = 0, cntspcAmericano = 0, cntspcEspresso = 0;
 	double spcTotal = 0;
-	
+
 	double allTotal = 0;
 	double userBudget = 0, userChange = 0;
 	private JTextField TxtF_Budget;
@@ -204,7 +204,7 @@ public class MainWindow {
 		JPanel Pnl_Transaction = new JPanel();
 		Pnl_Transaction.setLayout(null);
 		Pnl_Transaction.setBackground(new Color(250, 235, 215));
-		Pnl_Transaction.setBounds(560, 408, 250, 184);
+		Pnl_Transaction.setBounds(560, 335, 250, 184);
 		frmEspressohub.getContentPane().add(Pnl_Transaction);
 
 		JLabel Lbl_Transaction = new JLabel("TRANSACTION");
@@ -289,6 +289,7 @@ public class MainWindow {
 		TxtF_Specify_Qty.setBounds(10, 28, 130, 23);
 		Pnl_Specified_Qty.add(TxtF_Specify_Qty);
 
+		// Button Specified Quantity Coffee
 		JButton Btn_Sp_Coffee_Qty = new JButton("Enter");
 		Btn_Sp_Coffee_Qty.setForeground(new Color(240, 248, 255));
 		Btn_Sp_Coffee_Qty.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -328,14 +329,37 @@ public class MainWindow {
 		Btn_Sp_Espresso_Qty.setBounds(150, 28, 89, 23);
 		Btn_Sp_Espresso_Qty.setVisible(false);
 		Pnl_Specified_Qty.add(Btn_Sp_Espresso_Qty);
+		
+		JPanel Pnl_Reset = new JPanel();
+		Pnl_Reset.setBackground(new Color(222, 184, 135));
+		Pnl_Reset.setBounds(560, 530, 250, 62);
+		frmEspressohub.getContentPane().add(Pnl_Reset);
+		Pnl_Reset.setLayout(null);
+		
+		
+		// Button Reset
+		JButton Btn_Reset_All = new JButton("GREAT RESET");		
+		Btn_Reset_All.setForeground(new Color(255, 250, 250));
+		Btn_Reset_All.setBackground(new Color(160, 82, 45));
+		Btn_Reset_All.setFont(new Font("Tahoma", Font.BOLD, 14));
+		Btn_Reset_All.setBounds(10, 11, 230, 40);
+		Btn_Reset_All.setEnabled(false);
+		Pnl_Reset.add(Btn_Reset_All);
 
 		Btn_Coffee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				// Btn_Sp_Coffee_Qty.setVisible(true)
 				Btn_Sp_Coffee_Qty.setVisible(true);
+				Btn_Sp_Latte_Qty.setVisible(false);
+				Btn_Sp_Cappuccino_Qty.setVisible(false);
+				Btn_Sp_Americano_Qty.setVisible(false);
+				Btn_Sp_Espresso_Qty.setVisible(false);
+
 				getBlkCoffee = objPrice.getBlkCoffeePrice();
 				cntBlkCoffee++;
 
-				subBlkCoffee += getBlkCoffee;				
+				subBlkCoffee += getBlkCoffee;
 				allTotal += getBlkCoffee;
 
 				Lbl_Coffee_Order.setText("COFFEE: Black Coffee");
@@ -347,7 +371,13 @@ public class MainWindow {
 
 		Btn_Latte.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				// Btn_Sp_Latte_Qty.setVisible(true)
+				Btn_Sp_Coffee_Qty.setVisible(false);
 				Btn_Sp_Latte_Qty.setVisible(true);
+				Btn_Sp_Cappuccino_Qty.setVisible(false);
+				Btn_Sp_Americano_Qty.setVisible(false);
+				Btn_Sp_Espresso_Qty.setVisible(false);
 				getLatte = objPrice.getLattePrice();
 				cntLatte++;
 
@@ -363,7 +393,13 @@ public class MainWindow {
 
 		Btn_Cappuccino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				// Btn_Sp_Cappuccino_Qty.setVisible(true)
+				Btn_Sp_Coffee_Qty.setVisible(false);
+				Btn_Sp_Latte_Qty.setVisible(false);
 				Btn_Sp_Cappuccino_Qty.setVisible(true);
+				Btn_Sp_Americano_Qty.setVisible(false);
+				Btn_Sp_Espresso_Qty.setVisible(false);
 				getCappuccino = objPrice.getCappuccinoPrice();
 				cntCappuccino++;
 
@@ -379,7 +415,13 @@ public class MainWindow {
 
 		Btn_Americano.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				// Btn_Sp_Americano_Qty.setVisible(true)
+				Btn_Sp_Coffee_Qty.setVisible(false);
+				Btn_Sp_Latte_Qty.setVisible(false);
+				Btn_Sp_Cappuccino_Qty.setVisible(false);
 				Btn_Sp_Americano_Qty.setVisible(true);
+				Btn_Sp_Espresso_Qty.setVisible(false);
 				getAmericano = objPrice.getAmericanoPrice();
 				cntAmericano++;
 
@@ -395,6 +437,12 @@ public class MainWindow {
 
 		Btn_Espresso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				// Btn_Sp_Espresso_Qty.setVisible(true);
+				Btn_Sp_Coffee_Qty.setVisible(false);
+				Btn_Sp_Latte_Qty.setVisible(false);
+				Btn_Sp_Cappuccino_Qty.setVisible(false);
+				Btn_Sp_Americano_Qty.setVisible(false);
 				Btn_Sp_Espresso_Qty.setVisible(true);
 				getEspresso = objPrice.getEspressoPrice();
 				cntEspresso++;
@@ -408,45 +456,136 @@ public class MainWindow {
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", allTotal));
 			}
 		});
+		
+		// Reset All
+		Btn_Reset_All.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getBlkCoffee = 0; getLatte = 0; getCappuccino = 0; getAmericano = 0; getEspresso = 0;
+				subBlkCoffee = 0; subLatte = 0; subCappuccino = 0; subAmericano = 0; subEspresso = 0;
+				cntBlkCoffee = 0; cntLatte = 0; cntCappuccino = 0; cntAmericano = 0; cntEspresso = 0;
 
+				subspcBlkCoffee = 0; subspcLatte = 0; subspcCappuccino = 0; subspcAmericano = 0; subspcEspresso = 0;
+				cntspcBlkCoffee = 0; cntspcLatte = 0; cntspcCappuccino = 0; cntspcAmericano = 0; cntspcEspresso = 0;
+				spcTotal = 0;
+
+				allTotal = 0;
+				userBudget = 0; userChange = 0;
+				
+				TxtF_Specify_Qty.setText("00.00");
+				TxtF_Budget.setText("0.00");
+				
+				Lbl_Coffee_Order.setText("COFFEE: ");
+				Lbl_Qty_Num.setText("QUANTITY: 0");
+				Lbl_SubTotal.setText("SUB TOTAL: 0.00");
+				Lbl_Total.setText("TOTAL: 0.00");
+				
+				Lbl_Change.setText("CHANGE: 0.00");
+			}
+		});
+
+		// Button Specified Quantity
 		Btn_Sp_Coffee_Qty.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cntspcBlkCoffee = Integer.parseInt(TxtF_Specify_Qty.getText());
 				cntspcBlkCoffee += cntBlkCoffee;
-				
+
 				getBlkCoffee = objPrice.getBlkCoffeePrice();
 				subspcBlkCoffee = getBlkCoffee * cntspcBlkCoffee;
-				
+
 				cntBlkCoffee = cntspcBlkCoffee;
 				subBlkCoffee = subspcBlkCoffee;
 				spcTotal += subBlkCoffee;
 				allTotal = spcTotal;
-				
+
 				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntspcBlkCoffee));
 				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subspcBlkCoffee));
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", spcTotal));
-				
-				TxtF_Specify_Qty.setText("00.00");				
+
+				TxtF_Specify_Qty.setText("00.00");
 			}
 		});
 
 		Btn_Sp_Latte_Qty.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cntspcLatte = Integer.parseInt(TxtF_Specify_Qty.getText());
+				cntspcLatte += cntLatte;
+				
+				getLatte = objPrice.getLattePrice();
+				subspcLatte = getLatte * cntspcLatte;
+				
+				cntLatte = cntspcLatte;
+				subLatte = subspcLatte;
+				spcTotal += subLatte;
+				allTotal = spcTotal;
+				
+				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntspcLatte));
+				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subspcLatte));
+				Lbl_Total.setText("TOTAL: " + String.format("%.2f", spcTotal));
+
+				TxtF_Specify_Qty.setText("00.00");
 			}
 		});
 
 		Btn_Sp_Cappuccino_Qty.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cntspcCappuccino = Integer.parseInt(TxtF_Specify_Qty.getText());
+				cntspcCappuccino += cntCappuccino;
+				
+				getCappuccino = objPrice.getCappuccinoPrice();
+				subspcCappuccino = getCappuccino * cntspcCappuccino;
+				
+				cntCappuccino = cntspcCappuccino;
+				subCappuccino = subspcCappuccino;
+				spcTotal += subCappuccino;
+				allTotal = spcTotal;
+				
+				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntspcCappuccino));
+				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subspcCappuccino));
+				Lbl_Total.setText("TOTAL: " + String.format("%.2f", spcTotal));
+
+				TxtF_Specify_Qty.setText("00.00");
 			}
 		});
 
 		Btn_Sp_Americano_Qty.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cntspcAmericano = Integer.parseInt(TxtF_Specify_Qty.getText());
+				cntspcAmericano += cntAmericano;
+				
+				getAmericano = objPrice.getAmericanoPrice();
+				subspcAmericano = getAmericano * cntspcAmericano;
+				
+				cntAmericano = cntspcAmericano;
+				subAmericano = subspcAmericano;
+				spcTotal += subAmericano;
+				allTotal = spcTotal;
+				
+				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntspcAmericano));
+				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subspcAmericano));
+				Lbl_Total.setText("TOTAL: " + String.format("%.2f", spcTotal));
+
+				TxtF_Specify_Qty.setText("00.00");
 			}
 		});
 
 		Btn_Sp_Espresso_Qty.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cntspcEspresso = Integer.parseInt(TxtF_Specify_Qty.getText());
+				cntspcEspresso += cntEspresso;
+				
+				getEspresso = objPrice.getEspressoPrice();
+				subspcEspresso = getEspresso * cntspcEspresso;
+				
+				cntEspresso = cntspcEspresso;
+				subEspresso = subspcEspresso;
+				spcTotal += subEspresso;
+				allTotal = spcTotal;
+				
+				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntspcEspresso));
+				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subspcEspresso));
+				Lbl_Total.setText("TOTAL: " + String.format("%.2f", spcTotal));
+
+				TxtF_Specify_Qty.setText("00.00");
 			}
 		});
 
@@ -466,6 +605,7 @@ public class MainWindow {
 							Lbl_Notify.setText("PAID SUCCESSFULLY");
 
 							Btn_Receipt.setEnabled(true);
+							Btn_Reset_All.setEnabled(true);
 						} else {
 							Lbl_Notify.setForeground(new Color(255, 0, 0));
 							Lbl_Notify.setText("NOT ENOUGH BUDGET");
@@ -479,7 +619,8 @@ public class MainWindow {
 					Lbl_Notify.setForeground(new Color(255, 0, 0));
 					Lbl_Notify.setText("INVALID INPUT");
 				}
-
+				
+				TxtF_Budget.setText("0.00");
 			}
 		});
 
