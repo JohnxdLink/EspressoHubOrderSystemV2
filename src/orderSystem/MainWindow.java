@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
+import javax.swing.JTextArea;
 
 public class MainWindow {
 	/*
@@ -56,10 +57,10 @@ public class MainWindow {
 	private void initialize() {
 		// Instantiating Created Object
 		GetCoffeePrice objPrice = new GetCoffeePrice();
+		CoffeeDescriptions objCoffeeDscrpt = new CoffeeDescriptions();
 
 		frmEspressohub = new JFrame();
-		frmEspressohub.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(MainWindow.class.getResource("/orderSystem/images/coffees/Espresso Coffee Price.PNG")));
+		frmEspressohub.setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/orderSystem/images/icons/EspressoHub.png")));
 		frmEspressohub.getContentPane().setBackground(new Color(244, 164, 96));
 		frmEspressohub.setTitle("EspressoHub");
 		frmEspressohub.setResizable(false);
@@ -73,7 +74,7 @@ public class MainWindow {
 		Pnl_Header.setBounds(0, 0, 874, 39);
 		frmEspressohub.getContentPane().add(Pnl_Header);
 
-		JLabel Lbl_Header = new JLabel("EsspressoHub");
+		JLabel Lbl_Header = new JLabel("EspressoHub");
 		Lbl_Header.setForeground(new Color(139, 69, 19));
 		Lbl_Header.setFont(new Font("Tahoma", Font.BOLD, 24));
 		Pnl_Header.add(Lbl_Header);
@@ -262,7 +263,7 @@ public class MainWindow {
 		Lbl_Icon_Notify
 				.setIcon(new ImageIcon(MainWindow.class.getResource("/orderSystem/images/icons/Notification.png")));
 
-		JLabel Lbl_Notify = new JLabel("NOTIFICATION");
+		JLabel Lbl_Notify = new JLabel("");
 		Lbl_Notify.setBounds(50, 11, 450, 14);
 		Pnl_Notif.add(Lbl_Notify);
 		Lbl_Notify.setForeground(new Color(160, 82, 45));
@@ -345,10 +346,59 @@ public class MainWindow {
 		Btn_Reset_All.setBounds(10, 11, 230, 40);
 		Btn_Reset_All.setEnabled(false);
 		Pnl_Reset.add(Btn_Reset_All);
-
+		
+		JLabel Lbl_Logo_View = new JLabel("");
+		Lbl_Logo_View.setBounds(430, 72, 228, 228);
+		frmEspressohub.getContentPane().add(Lbl_Logo_View);
+		Lbl_Logo_View.setIcon(new ImageIcon(MainWindow.class.getResource("/orderSystem/images/icons/EspressoHubSmallView.png")));
+		
+		JPanel Pnl_CoffeeDscpt_Vw = new JPanel();
+		Pnl_CoffeeDscpt_Vw.setBackground(new Color(139, 69, 19));
+		Pnl_CoffeeDscpt_Vw.setBounds(300, 62, 510, 250);
+		frmEspressohub.getContentPane().add(Pnl_CoffeeDscpt_Vw);
+		Pnl_CoffeeDscpt_Vw.setLayout(null);
+		Pnl_CoffeeDscpt_Vw.setVisible(false);
+		
+		JLabel Lbl_Coffee_Img = new JLabel("");		
+		Lbl_Coffee_Img.setBounds(10, 19, 200, 211);
+		Pnl_CoffeeDscpt_Vw.add(Lbl_Coffee_Img);
+		
+		JLabel Lbl_BlkCoffee_Vw = new JLabel("");
+		Lbl_BlkCoffee_Vw.setForeground(new Color(233, 150, 122));
+		Lbl_BlkCoffee_Vw.setBackground(new Color(240, 240, 240));
+		Lbl_BlkCoffee_Vw.setFont(new Font("Tahoma", Font.BOLD, 20));
+		Lbl_BlkCoffee_Vw.setBounds(220, 30, 280, 14);
+		Pnl_CoffeeDscpt_Vw.add(Lbl_BlkCoffee_Vw);
+		
+		JLabel Lbl_Dscrpt_Vw = new JLabel("DESCRIPTION:");
+		Lbl_Dscrpt_Vw.setForeground(new Color(255, 255, 255));
+		Lbl_Dscrpt_Vw.setBackground(new Color(240, 240, 240));
+		Lbl_Dscrpt_Vw.setFont(new Font("Tahoma", Font.BOLD, 16));
+		Lbl_Dscrpt_Vw.setBounds(220, 60, 280, 14);
+		Pnl_CoffeeDscpt_Vw.add(Lbl_Dscrpt_Vw);
+		
+		JTextArea TxtA_Vw = new JTextArea();
+		TxtA_Vw.setForeground(new Color(255, 255, 255));
+		TxtA_Vw.setBackground(new Color(139, 69, 19));
+		TxtA_Vw.setLineWrap(true);
+		TxtA_Vw.setWrapStyleWord(true);
+		TxtA_Vw.setEditable(false);
+		
+		TxtA_Vw.setFont(new Font("Monospaced", Font.BOLD, 14));
+		TxtA_Vw.setBounds(220, 80, 280, 150);
+		Pnl_CoffeeDscpt_Vw.add(TxtA_Vw);
+		
 		Btn_Coffee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
+				// Setting Logo to not Visible
+				Lbl_Logo_View.setVisible(false);
+				
+				Lbl_BlkCoffee_Vw.setText(objCoffeeDscrpt.getBlkCoffeeLbl());
+				Lbl_Coffee_Img.setIcon(new ImageIcon(MainWindow.class.getResource(objCoffeeDscrpt.getImgBlkCoffee())));
+				TxtA_Vw.setText(objCoffeeDscrpt.getBlkCoffeeDscrpt());
+				Pnl_CoffeeDscpt_Vw.setVisible(true);
+				
 				// Btn_Sp_Coffee_Qty.setVisible(true)
 				Btn_Sp_Coffee_Qty.setVisible(true);
 				Btn_Sp_Latte_Qty.setVisible(false);
@@ -371,6 +421,14 @@ public class MainWindow {
 
 		Btn_Latte.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				// Setting Logo to not Visible
+				Lbl_Logo_View.setVisible(false);
+				
+				Lbl_BlkCoffee_Vw.setText(objCoffeeDscrpt.getLatteLbl());
+				Lbl_Coffee_Img.setIcon(new ImageIcon(MainWindow.class.getResource(objCoffeeDscrpt.getImgLatte())));
+				TxtA_Vw.setText(objCoffeeDscrpt.getLatteDscrpt());
+				Pnl_CoffeeDscpt_Vw.setVisible(true);
 
 				// Btn_Sp_Latte_Qty.setVisible(true)
 				Btn_Sp_Coffee_Qty.setVisible(false);
@@ -393,6 +451,14 @@ public class MainWindow {
 
 		Btn_Cappuccino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				// Setting Logo to not Visible
+				Lbl_Logo_View.setVisible(false);
+				
+				Lbl_BlkCoffee_Vw.setText(objCoffeeDscrpt.getCappuccinoLbl());
+				Lbl_Coffee_Img.setIcon(new ImageIcon(MainWindow.class.getResource(objCoffeeDscrpt.getImgCappuccino())));
+				TxtA_Vw.setText(objCoffeeDscrpt.getCappuccinoDscrpt());
+				Pnl_CoffeeDscpt_Vw.setVisible(true);
 
 				// Btn_Sp_Cappuccino_Qty.setVisible(true)
 				Btn_Sp_Coffee_Qty.setVisible(false);
@@ -415,6 +481,14 @@ public class MainWindow {
 
 		Btn_Americano.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				// Setting Logo to not Visible
+				Lbl_Logo_View.setVisible(false);
+				
+				Lbl_BlkCoffee_Vw.setText(objCoffeeDscrpt.getAmericanoLbl());
+				Lbl_Coffee_Img.setIcon(new ImageIcon(MainWindow.class.getResource(objCoffeeDscrpt.getImgAmericano())));
+				TxtA_Vw.setText(objCoffeeDscrpt.getAmericanoDscrpt());
+				Pnl_CoffeeDscpt_Vw.setVisible(true);
 
 				// Btn_Sp_Americano_Qty.setVisible(true)
 				Btn_Sp_Coffee_Qty.setVisible(false);
@@ -437,6 +511,14 @@ public class MainWindow {
 
 		Btn_Espresso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				// Setting Logo to not Visible
+				Lbl_Logo_View.setVisible(false);
+				
+				Lbl_BlkCoffee_Vw.setText(objCoffeeDscrpt.getEspressoLbl());
+				Lbl_Coffee_Img.setIcon(new ImageIcon(MainWindow.class.getResource(objCoffeeDscrpt.getImgEspresso())));
+				TxtA_Vw.setText(objCoffeeDscrpt.getEspressoDscrpt());
+				Pnl_CoffeeDscpt_Vw.setVisible(true);
 
 				// Btn_Sp_Espresso_Qty.setVisible(true);
 				Btn_Sp_Coffee_Qty.setVisible(false);
@@ -480,6 +562,10 @@ public class MainWindow {
 				Lbl_Total.setText("TOTAL: 0.00");
 				
 				Lbl_Change.setText("CHANGE: 0.00");
+				Lbl_Notify.setText("");
+				
+				Lbl_Logo_View.setVisible(true);
+				Pnl_CoffeeDscpt_Vw.setVisible(false);
 			}
 		});
 
