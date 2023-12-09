@@ -416,6 +416,8 @@ public class MainWindow {
 				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntBlkCoffee));
 				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subBlkCoffee));
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", allTotal));
+				
+				Btn_Reset_All.setEnabled(true);
 			}
 		});
 
@@ -446,6 +448,8 @@ public class MainWindow {
 				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntLatte));
 				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subLatte));
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", allTotal));
+				
+				Btn_Reset_All.setEnabled(true);
 			}
 		});
 
@@ -476,6 +480,8 @@ public class MainWindow {
 				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntCappuccino));
 				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subCappuccino));
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", allTotal));
+				
+				Btn_Reset_All.setEnabled(true);
 			}
 		});
 
@@ -506,6 +512,8 @@ public class MainWindow {
 				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntAmericano));
 				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subAmericano));
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", allTotal));
+				
+				Btn_Reset_All.setEnabled(true);
 			}
 		});
 
@@ -536,6 +544,8 @@ public class MainWindow {
 				Lbl_Qty_Num.setText("QUANTITY: " + Integer.toString(cntEspresso));
 				Lbl_SubTotal.setText("SUB TOTAL: " + String.format("%.2f", subEspresso));
 				Lbl_Total.setText("TOTAL: " + String.format("%.2f", allTotal));
+				
+				Btn_Reset_All.setEnabled(true);
 			}
 		});
 		
@@ -693,8 +703,7 @@ public class MainWindow {
 							Lbl_Notify.setForeground(new Color(0, 255, 0));
 							Lbl_Notify.setText("PAID SUCCESSFULLY");
 
-							Btn_Receipt.setEnabled(true);
-							Btn_Reset_All.setEnabled(true);
+							Btn_Receipt.setEnabled(true);							
 						} else {
 							Lbl_Notify.setForeground(new Color(255, 0, 0));
 							Lbl_Notify.setText("NOT ENOUGH BUDGET");
