@@ -14,14 +14,14 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
-import java.awt.BorderLayout;
 import javax.swing.JTextArea;
 
 public class MainWindow {
 	/*
-	 * Project : EspressoHub Order System Version 1.0 Developer : Castro John
-	 * Christian Message : This is just a simple order system Date Created :
-	 * 12/02/2023
+	 * Project      : EspressoHub Order System Version 1.0
+	 * Developer    : Castro John Christian
+	 * Message      : This is just a simple order system
+	 * Date Created : 12/02/2023
 	 */
 	private JFrame frmEspressohub;
 	double getBlkCoffee = 0, getLatte = 0, getCappuccino = 0, getAmericano = 0, getEspresso = 0;
@@ -118,12 +118,14 @@ public class MainWindow {
 		JButton Btn_Coffee = new JButton("Coffee");
 		Btn_Coffee.setForeground(new Color(255, 255, 255));
 		Btn_Coffee.setBackground(new Color(139, 69, 19));
+		Btn_Coffee.setFocusable(false);
 		Btn_Coffee.setToolTipText("Want Black Coffee?");
 		Btn_Coffee.setFont(new Font("Tahoma", Font.BOLD, 14));
 		Btn_Coffee.setBounds(20, 211, 130, 35);
 		frmEspressohub.getContentPane().add(Btn_Coffee);
 
 		JButton Btn_Latte = new JButton("Latte");
+		Btn_Latte.setFocusable(false);
 		Btn_Latte.setToolTipText("Want Latte?");
 		Btn_Latte.setForeground(Color.WHITE);
 		Btn_Latte.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -132,6 +134,7 @@ public class MainWindow {
 		frmEspressohub.getContentPane().add(Btn_Latte);
 
 		JButton Btn_Cappuccino = new JButton("Cappuccino");
+		Btn_Cappuccino.setFocusable(false);
 		Btn_Cappuccino.setToolTipText("Want Cappuccino?");
 		Btn_Cappuccino.setForeground(Color.WHITE);
 		Btn_Cappuccino.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -140,6 +143,7 @@ public class MainWindow {
 		frmEspressohub.getContentPane().add(Btn_Cappuccino);
 
 		JButton Btn_Americano = new JButton("Americano");
+		Btn_Americano.setFocusable(false);
 		Btn_Americano.setToolTipText("Want Americano?");
 		Btn_Americano.setForeground(Color.WHITE);
 		Btn_Americano.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -148,6 +152,7 @@ public class MainWindow {
 		frmEspressohub.getContentPane().add(Btn_Americano);
 
 		JButton Btn_Espresso = new JButton("Espresso");
+		Btn_Espresso.setFocusable(false);
 		Btn_Espresso.setToolTipText("Want Espresso?");
 		Btn_Espresso.setForeground(Color.WHITE);
 		Btn_Espresso.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -157,7 +162,7 @@ public class MainWindow {
 
 		JButton Btn_Coming = new JButton("Coming Soon");
 		Btn_Coming.setEnabled(false);
-		Btn_Coming.setToolTipText("Black Coffee");
+		Btn_Coming.setToolTipText("Coming Soon");
 		Btn_Coming.setForeground(Color.WHITE);
 		Btn_Coming.setFont(new Font("Tahoma", Font.BOLD, 14));
 		Btn_Coming.setBackground(new Color(139, 69, 19));
@@ -231,6 +236,7 @@ public class MainWindow {
 
 		JButton Btn_Budget = new JButton("Enter");
 		Btn_Budget.setBounds(51, 79, 89, 23);
+		Btn_Budget.setFocusable(false);
 		Pnl_Transaction.add(Btn_Budget);
 		Btn_Budget.setForeground(new Color(240, 248, 255));
 		Btn_Budget.setBackground(new Color(255, 127, 80));
@@ -243,6 +249,7 @@ public class MainWindow {
 		Lbl_Change.setFont(new Font("Tahoma", Font.BOLD, 14));
 
 		JButton Btn_Receipt = new JButton("RECEIPT");
+		Btn_Receipt.setFocusable(false);
 		Btn_Receipt.setBounds(110, 138, 130, 35);
 		Pnl_Transaction.add(Btn_Receipt);
 		Btn_Receipt.setEnabled(false);
@@ -292,6 +299,7 @@ public class MainWindow {
 
 		// Button Specified Quantity Coffee
 		JButton Btn_Sp_Coffee_Qty = new JButton("Enter");
+		Btn_Sp_Coffee_Qty.setFocusable(false);
 		Btn_Sp_Coffee_Qty.setForeground(new Color(240, 248, 255));
 		Btn_Sp_Coffee_Qty.setFont(new Font("Tahoma", Font.BOLD, 14));
 		Btn_Sp_Coffee_Qty.setBackground(new Color(255, 127, 80));
@@ -300,6 +308,7 @@ public class MainWindow {
 		Pnl_Specified_Qty.add(Btn_Sp_Coffee_Qty);
 
 		JButton Btn_Sp_Latte_Qty = new JButton("Enter");
+		Btn_Sp_Latte_Qty.setFocusable(false);
 		Btn_Sp_Latte_Qty.setForeground(new Color(240, 248, 255));
 		Btn_Sp_Latte_Qty.setFont(new Font("Tahoma", Font.BOLD, 14));
 		Btn_Sp_Latte_Qty.setBackground(new Color(255, 127, 80));
@@ -308,6 +317,7 @@ public class MainWindow {
 		Pnl_Specified_Qty.add(Btn_Sp_Latte_Qty);
 
 		JButton Btn_Sp_Cappuccino_Qty = new JButton("Enter");
+		Btn_Sp_Cappuccino_Qty.setFocusable(false);
 		Btn_Sp_Cappuccino_Qty.setForeground(new Color(240, 248, 255));
 		Btn_Sp_Cappuccino_Qty.setFont(new Font("Tahoma", Font.BOLD, 14));
 		Btn_Sp_Cappuccino_Qty.setBackground(new Color(255, 127, 80));
@@ -316,6 +326,7 @@ public class MainWindow {
 		Pnl_Specified_Qty.add(Btn_Sp_Cappuccino_Qty);
 
 		JButton Btn_Sp_Americano_Qty = new JButton("Enter");
+		Btn_Sp_Americano_Qty.setFocusable(false);
 		Btn_Sp_Americano_Qty.setForeground(new Color(240, 248, 255));
 		Btn_Sp_Americano_Qty.setFont(new Font("Tahoma", Font.BOLD, 14));
 		Btn_Sp_Americano_Qty.setBackground(new Color(255, 127, 80));
@@ -324,6 +335,7 @@ public class MainWindow {
 		Pnl_Specified_Qty.add(Btn_Sp_Americano_Qty);
 
 		JButton Btn_Sp_Espresso_Qty = new JButton("Enter");
+		Btn_Sp_Espresso_Qty.setFocusable(false);
 		Btn_Sp_Espresso_Qty.setForeground(new Color(240, 248, 255));
 		Btn_Sp_Espresso_Qty.setFont(new Font("Tahoma", Font.BOLD, 14));
 		Btn_Sp_Espresso_Qty.setBackground(new Color(255, 127, 80));
@@ -339,7 +351,8 @@ public class MainWindow {
 		
 		
 		// Button Reset
-		JButton Btn_Reset_All = new JButton("GREAT RESET");		
+		JButton Btn_Reset_All = new JButton("GREAT RESET");
+		Btn_Reset_All.setFocusable(false);
 		Btn_Reset_All.setForeground(new Color(255, 250, 250));
 		Btn_Reset_All.setBackground(new Color(160, 82, 45));
 		Btn_Reset_All.setFont(new Font("Tahoma", Font.BOLD, 14));
